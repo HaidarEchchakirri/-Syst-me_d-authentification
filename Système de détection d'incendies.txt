@@ -1,0 +1,34 @@
+#define SENSOR_PIN 12
+#define BUZZER_PIN 4
+#define RELAY_PIN 8
+int Pump=8;
+int Buzzer=4;
+int Sensor=12;
+void setup() {
+  Serial.begin(9600);
+  pinMode(Pump, OUTPUT);
+   pinMode(Buzzer, OUTPUT);
+   pinMode(Sensor, INPUT_PULLUP);
+   
+}
+
+void loop() {
+
+  if(digitalRead(Sensor)==LOW)
+  {
+    Serial.println("Flame Detection!!");  
+    digitalWrite(Pump,HIGH);
+    digitalWrite(Buzzer,HIGH);
+    delay(1000);
+//    digitalWrite(Pump,LOW);
+//     digitalWrite(Buzzer,LOW);
+//    delay(1000);
+   }
+   else
+   {
+      Serial.println("No dangerous!"); 
+      digitalWrite(Pump,LOW);
+      digitalWrite(Buzzer,LOW);
+      delay(500);
+   }
+   }
